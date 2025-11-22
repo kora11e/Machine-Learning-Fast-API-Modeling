@@ -8,14 +8,14 @@ This project is a RESTful API built with **FastAPI** that predicts medical insur
 
 The application includes robust input validation, custom middleware for performance tracking, and a logging system for request analytics.
 
-## 🚀 Features
+## Features
 
 *   **Multi-Model Support:** Choose between Random Forest, Decision Tree, or XGBoost for predictions.
 *   **Strict Validation:** Pydantic models ensure data integrity (e.g., age limits, valid BMI ranges, correct One-Hot Encoding sums).
 *   **Analytics Logging:** Custom middleware logs detailed request/response metrics (latency, payload size, status codes) to `analytics.log`.
 *   **Performance Headers:** Returns `X-Process-Time` headers to track processing speed.
 
-## 📂 Project Structure
+## Project Structure
 
 **Important:** Your code expects specific relative paths (`../models/`). Ensure your directory looks like this:
 
@@ -27,14 +27,14 @@ The application includes robust input validation, custom middleware for performa
 │   ├── dt_regressor.pkl
 │   └── xgb_regressor.pkl
 │
-├── src/                      # Directory containing your API code
+├── api/                      # Directory containing your API code
 │   └── main.py               # The FastAPI application file
 │
 ├── analytics.log             # Generated automatically at runtime
 └── requirements.txt          # Python dependencies
 ```
 
-## 🛠️ Installation
+## Installation
 
 1.  **Clone the repository** (or set up the folder structure above).
 2.  **Install dependencies**. Create a `requirements.txt` with the following libraries (including the specific libraries used to train your pickle models, usually scikit-learn and xgboost):
@@ -53,7 +53,7 @@ The application includes robust input validation, custom middleware for performa
     pip install -r requirements.txt
     ```
 
-## 🏃‍♂️ Running the Application
+## Running the Application
 
 Navigate to the directory containing your `main.py` file and run the Uvicorn server:
 
@@ -65,7 +65,7 @@ uvicorn main:app --reload
 *   The API will be available at: `http://127.0.0.1:8000`
 *   Interactive Docs (Swagger UI): `http://127.0.0.1:8000/docs`
 
-## 📡 API Endpoints
+## API Endpoints
 
 ### 1. Health Check
 *   **URL:** `/`
@@ -89,7 +89,7 @@ uvicorn main:app --reload
 
 ---
 
-## 📝 Input Data Schema
+## Input Data Schema
 
 All prediction endpoints expect a JSON body with the following structure. The API uses **One-Hot Encoding** for categorical variables.
 
@@ -129,7 +129,7 @@ All prediction endpoints expect a JSON body with the following structure. The AP
 }
 ```
 
-## 📊 Analytics & Logging
+## Analytics & Logging
 
 The application includes advanced middleware (`analytics_middleware`) that intercepts every request.
 
@@ -152,6 +152,6 @@ The application includes advanced middleware (`analytics_middleware`) that inter
     *   `X-Request-Size`: Size of the incoming body (bytes).
     *   `X-Response-Size`: Size of the outgoing body (bytes).
 
-## ⚠️ Validation Errors
+## Validation Errors
 
 If the input data violates the logic (e.g., `sex_0` and `sex_1` are both 1), the API returns a **422 Unprocessable Entity** error with a descriptive message explaining exactly which validation rule failed.
