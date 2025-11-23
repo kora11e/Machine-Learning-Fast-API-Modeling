@@ -1,6 +1,6 @@
 # Insurance Charges Prediction API
 
-This project is a RESTful API built with FastAPI that predicts medical insurance charges based on personal attributes. It utilizes three pre-trained machine learning models (Random Forest, Decision Tree, and XGBoost) to provide predictions.
+This project is a RESTful API built with FastAPI that predicts medical insurance charges based on personal attributes. It utilizes three pre-trained machine learning models (Random Forest, Ensemble Decision Tree, and XGBoost) to provide predictions.
 
 The application includes robust input validation, custom middleware for performance tracking, and a logging system for request analytics.
 
@@ -9,7 +9,7 @@ The application includes robust input validation, custom middleware for performa
 *   **Multi-Model Support:** Choose between Random Forest, Decision Tree, or XGBoost for predictions.
 *   **Strict Validation:** Pydantic models ensure data integrity (e.g., age limits, valid BMI ranges, correct One-Hot Encoding sums).
 *   **Analytics Logging:** Custom middleware logs detailed request/response metrics (latency, payload size, status codes) to `analytics.log`.
-*   **Performance Headers:** Returns `X-Process-Time` headers to track processing speed.
+*   **Performance Headers:** Returns X-Process-Time headers to track processing speed.
 
 ## Project Structure
 
