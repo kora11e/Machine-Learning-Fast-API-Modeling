@@ -4,3 +4,6 @@ pandas == 2.3.2
 sklearn == 1.7.1
 seaborn
 xgboost
+joblib
+pickle
+graphviz
