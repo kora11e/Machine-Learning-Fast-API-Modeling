@@ -6,14 +6,14 @@ The application includes robust input validation, custom middleware for performa
 
 ## Features
 
-*   **Multi-Model Support:** Choose between Random Forest, Decision Tree, or XGBoost for predictions.
-*   **Strict Validation:** Pydantic models ensure data integrity (e.g., age limits, valid BMI ranges, correct One-Hot Encoding sums).
-*   **Analytics Logging:** Custom middleware logs detailed request/response metrics (latency, payload size, status codes) to `analytics.log`.
-*   **Performance Headers:** Returns X-Process-Time headers to track processing speed.
+*   Multi-Model Support: Choose between Random Forest, Decision Tree, or XGBoost for predictions.
+*   Strict Validation: Pydantic models ensure data integrity (e.g., age limits, valid BMI ranges, correct One-Hot Encoding sums).
+*   Analytics Logging: Custom middleware logs detailed request/response metrics (latency, payload size, status codes) to `analytics.log`.
+*   Performance Headers: Returns X-Process-Time headers to track processing speed.
 
 ## Project Structure
 
-**Important:** Your code expects specific relative paths (`../models/`). Ensure your directory looks like this:
+Important: Your code expects specific relative paths (`../models/`). Ensure your directory looks like this:
 
 ```text
 /project-root
