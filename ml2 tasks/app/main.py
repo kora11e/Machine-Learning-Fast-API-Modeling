@@ -30,6 +30,10 @@ app = FastAPI(title='Insurance Charges Prediction')
 class InsuranceData(BaseModel):
     age:        int
     bmi:        float
+    bmi_category_normal: float
+    bmi_category_obese: float
+    bmi_category_overweight: float
+    bmi_category_underweight: float
     children:   int
     sex_0 :     float
     sex_1 :     float
@@ -39,6 +43,11 @@ class InsuranceData(BaseModel):
     region_3:   float
     smoker_0:   float
     smoker_1:   float
+    age_group_0_25: float
+    age_group_26_35: float
+    age_group_36_45: float
+    age_group_46_55: float
+    age_group_55_65: float
 
     @validator("age")
     def age_must_be_positive(cls, v):
@@ -78,7 +87,19 @@ class InsuranceData(BaseModel):
         return v
 
     # --- REGION ONE-HOT ---
-    @validator("region_0", "region_1", "region_2", "region_3")
+    @validator("region_0", 
+               "region_1", 
+               "region_2", 
+               "region_3",
+               "bmi_category_normal",
+               "bmi_category_underweight",
+               "bmi_category_obese",
+               "bmi_category_overweight",
+               "age_group_0_25",
+                "age_group_26_35",
+                "age_group_36_45",
+                "age_group_46_55",
+                "age_group_55_65")
     def region_values_binary(cls, v):
         if v not in (0, 1):
             raise ValueError("region values must be 0 or 1")
@@ -186,9 +207,12 @@ def main():
 def predict_charge_rf(data : InsuranceData, api_key: str = Security(get_api_key)):
     features = np.array(
         [[
-            #list(data.__annotations__.keys())
             data.age, 
             data.bmi, 
+            data.bmi_category_normal,
+            data.bmi_category_obese,
+            data.bmi_category_overweight,
+            data.bmi_category_underweight,
             data.children,
             data.sex_0, 
             data.sex_1, 
@@ -197,7 +221,12 @@ def predict_charge_rf(data : InsuranceData, api_key: str = Security(get_api_key)
             data.region_2,
             data.region_3, 
             data.smoker_0,
-            data.smoker_1
+            data.smoker_1,
+            data.age_group_0_25,
+            data.age_group_26_35,
+            data.age_group_36_45,
+            data.age_group_46_55,
+            data.age_group_55_65
         ]]
     )
 
@@ -211,6 +240,10 @@ def predict_charge_dt(data : InsuranceData, api_key: str = Security(get_api_key)
         [[
             data.age, 
             data.bmi, 
+            data.bmi_category_normal,
+            data.bmi_category_obese,
+            data.bmi_category_overweight,
+            data.bmi_category_underweight,
             data.children,
             data.sex_0, 
             data.sex_1, 
@@ -219,7 +252,12 @@ def predict_charge_dt(data : InsuranceData, api_key: str = Security(get_api_key)
             data.region_2,
             data.region_3, 
             data.smoker_0,
-            data.smoker_1
+            data.smoker_1,
+            data.age_group_0_25,
+            data.age_group_26_35,
+            data.age_group_36_45,
+            data.age_group_46_55,
+            data.age_group_55_65
         ]]
     )
     
@@ -234,6 +272,10 @@ def predict_charge_xgb(data : InsuranceData, api_key: str = Security(get_api_key
         [[
             data.age, 
             data.bmi, 
+            data.bmi_category_normal,
+            data.bmi_category_obese,
+            data.bmi_category_overweight,
+            data.bmi_category_underweight,
             data.children,
             data.sex_0, 
             data.sex_1, 
@@ -242,7 +284,12 @@ def predict_charge_xgb(data : InsuranceData, api_key: str = Security(get_api_key
             data.region_2,
             data.region_3, 
             data.smoker_0,
-            data.smoker_1
+            data.smoker_1,
+            data.age_group_0_25,
+            data.age_group_26_35,
+            data.age_group_36_45,
+            data.age_group_46_55,
+            data.age_group_55_65
         ]]
     )
     

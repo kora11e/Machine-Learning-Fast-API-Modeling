@@ -7,3 +7,8 @@ xgboost
 joblib
 pickle
 graphviz
+fastapi
+pickle
+joblib
+starlette
+pydantics
