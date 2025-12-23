@@ -1,6 +1,8 @@
-# Insurance Charges Prediction with Fast API 
+# ML2 Final projects 
 
-## Regression Model
+## Insurance Charges Prediction with Fast API
+
+### Regression Model
 
 This notebook focuses on building and evaluating regression models to predict target outcomes based on input features using machine learning techniques. The project explores several regression algorithms — including Linear Regression, Decision Tree Regressor, Random Forest, and XGBoost Regressor — to identify the most effective predictive model.
 
@@ -8,9 +10,15 @@ After extensive feature engineering, hyperparameter optimization, and performanc
 
 These results indicate that the XGBoost model explains approximately 87% of the variance in the target variable and maintains low relative prediction error, showcasing its reliability for real-world forecasting tasks. The notebook includes detailed steps for data preprocessing, model training, performance comparison, and error visualization to ensure transparency and reproducibility.
 
-This project is a RESTful API built with FastAPI that predicts medical insurance charges based on personal attributes. It utilizes three pre-trained machine learning models (Random Forest, Ensemble Decision Tree, and XGBoost) to provide predictions.
+## Customer Segmentation Prediction for New Markets
 
-The application includes robust input validation, custom middleware for performance tracking, and a logging system for request analytics.
+This project focuses on building and comparing machine learning models to predict customer segments for a new market. The objective is to help an automobile company classify each potential customer into one of four segments (A, B, C, or D) based on demographic, socioeconomic, and behavioral data. The dataset used for this study includes 8,068 labeled customer records for training and 2,627 unlabeled records for prediction. Key features include variables such as gender, age, marital status, profession, family size, spending score, and education level.
+
+Multiple machine learning algorithms were trained and evaluated to identify the most effective approach for this classification problem. Models tested include Decision Tree, Random Forest, Gradient Boosting, XGBoost, and a Neural Network built with Keras. Among them, the Gradient Boosting Classifier achieved the best validation accuracy of 53.9%, outperforming the other models. A soft-voting ensemble of Random Forest, Gradient Boosting, and XGBoost was also tested but achieved a slightly lower accuracy (52.9%). The neural network model, although competitive, did not surpass the performance of the tree-based methods.
+
+The trained Gradient Boosting model was ultimately selected for final prediction. It was applied to the test dataset to generate predicted customer segments, which were then inverse-transformed into their categorical labels (A, B, C, D). The final output was saved as Predicted_Customer_Segments.csv.
+
+From the analysis, features such as spending score and age emerged as strong predictors of customer segments, while profession and family size contributed nonlinearly. The project demonstrates the application of structured data preprocessing, model comparison, and ensemble learning to a real-world marketing segmentation task.
 
 ## API Features
 
