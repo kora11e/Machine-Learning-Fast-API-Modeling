@@ -8,4 +8,6 @@ starlette
 pydantic
 Jinja2
 dotenv
-torch
+xgboost
+scikit-learn
+#torch

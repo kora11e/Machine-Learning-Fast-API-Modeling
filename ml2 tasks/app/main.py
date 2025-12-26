@@ -9,8 +9,8 @@ from dotenv import load_dotenv
 import os
 from fastapi.security.api_key import APIKeyHeader
 from starlette.status import HTTP_403_FORBIDDEN
-import torch
-import torch.nn as nn
+#import torch
+#import torch.nn as nn
 import sys
 
 #sys.setrecursionlimit(5000)
@@ -31,8 +31,8 @@ api_key_header = APIKeyHeader(name=API_KEY, auto_error=False)
 def load_models():
     global rf_model, xgb_model
 
-    rf_model = joblib.load("./models/rf_regressor.pkl")
-    xgb_model = joblib.load("./models/xgb_regressor.pkl")
+    rf_model = joblib.load("./models/best_rf_regressor.pkl")
+    xgb_model = joblib.load("./models/best_xgb_regressor.pkl")
 
     print("Models loaded successfully")
 
@@ -76,7 +76,9 @@ print(model)
 
 class InsuranceData(BaseModel):
     age:        int
+    age2:       int
     bmi:        float
+    bmi2:       float
     bmi_category_normal: float
     bmi_category_obese: float
     bmi_category_overweight: float
@@ -173,7 +175,7 @@ logging.basicConfig(
 #extract for nn only
 def extract_features_nn(data: InsuranceData) -> np.ndarray:
     feature_order = [
-        "age", "bmi", "bmi_category_normal", "bmi_category_obese",
+        "age", 'age2', "bmi", 'bmi2', "bmi_category_normal", "bmi_category_obese",
         "bmi_category_overweight", "bmi_category_underweight", "children",
         "sex_0", "sex_1", "region_0", "region_1", "region_2", "region_3",
         "smoker_0", "smoker_1",
@@ -189,7 +191,9 @@ def extract_features(data: InsuranceData) -> np.ndarray:
     """
     feature_order = [
         "age",
+        'age2',
         "bmi",
+        'bmi2',
         "bmi_category_normal",
         "bmi_category_obese",
         "bmi_category_overweight",
