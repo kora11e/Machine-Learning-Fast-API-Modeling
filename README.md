@@ -2,6 +2,12 @@
 
 ## Insurance Charges Prediction with Fast API
 
+Authors:
+Karol Rochalski
+Jamal Al-Shaweai
+
+Run via venv for notebook models or dockerfile for API
+
 ### Regression Model
 
 This notebook focuses on building and evaluating regression models to predict target outcomes based on input features using machine learning techniques. The project explores several regression algorithms — including Linear Regression, Decision Tree Regressor, Random Forest, and XGBoost Regressor — to identify the most effective predictive model.
