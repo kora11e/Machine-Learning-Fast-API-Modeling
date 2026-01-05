@@ -3,10 +3,14 @@
 ## Insurance Charges Prediction with Fast API
 
 Authors:
-Karol Rochalski
-Jamal Al-Shaweai
+- Karol Rochalski
+- Jamal Al-Shaweai
 
 Run via venv for notebook models or dockerfile for API
+
+```python
+docker pull karolrochalski/insurance-api:latest
+```
 
 ### Regression Model
 
