@@ -12,6 +12,8 @@ Run via venv for notebook models or dockerfile for API
 docker pull karolrochalski/insurance-api:latest
 ```
 
+For docker container, run it on port 8000:8000
+
 ### Regression Model
 
 This notebook focuses on building and evaluating regression models to predict target outcomes based on input features using machine learning techniques. The project explores several regression algorithms — including Linear Regression Deep Neural Network with dropout and normalization, Decision Tree Regressor, Random Forest, and XGBoost Regressor — to identify the most effective predictive model.
